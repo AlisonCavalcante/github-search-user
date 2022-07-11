@@ -16,4 +16,5 @@ body{
   color: var(--lm-text);
   width: 100%;
   height: 100vh;
+  font-family: "Space Mono", monospace
 }

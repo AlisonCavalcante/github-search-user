@@ -1,0 +1,45 @@
+.card {
+  background-color: var(--lm-bg-content);
+  display: flex;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: var(--lm-shadow);
+}
+
+.card-body {
+  width: 100%;
+}
+
+.card-body__profile-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body__profile-status {
+  background-color: var(--lm-bg);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.card-body__profile-status > .title{
+  font-family: "Space Mono", monospace
+}
+
+.card-body__profile-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-body__profile-bottom div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-bottom__content {
+  padding: 10px
+}
