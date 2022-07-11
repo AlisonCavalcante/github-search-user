@@ -4,7 +4,7 @@
       <h3>DevFinder</h3>
       <p>Light</p>
     </div>
-    <app-search style="width: 50%"></app-search>
-    <app-user-card style="width: 50%"></app-user-card>
+    <app-search (emmitText)="searchUser($event)" style="width: 50%"></app-search>
+    <app-user-card [userName]="userName" style="width: 50%"></app-user-card>
   </div>
 </main>

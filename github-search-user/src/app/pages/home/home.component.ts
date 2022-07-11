@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  userName!: string;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  searchUser(userName: string) {
+   this.userName = userName;
+  }
 }
