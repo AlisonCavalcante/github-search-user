@@ -1,1 +1,17 @@
-<p>search works!</p>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="search()">
+    <div class="content-search">
+      <div class="content-input" style="display: flex">
+        <div class="content-img">
+          <img src="../../../assets/imgs/icon-search.svg" alt="">
+        </div>
+        <input
+          formControlName="username"
+          type="text"
+          placeholder="Digite o username..."
+        />
+      </div>
+      <button class="content-search__button" type="submit">Pesquisar</button>
+    </div>
+  </form>
+</div>

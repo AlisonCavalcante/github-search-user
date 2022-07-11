@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  form!: FormGroup;
+  @Output() public emmitText: EventEmitter<string> = new EventEmitter();
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
+  initForm(){
+    this.form = this.formBuilder.group({
+      username: [null]
+    })
+  }
+
+  search(){
+    this.emmitText.emit(this.form.get('username')?.value)
+  }
 }
