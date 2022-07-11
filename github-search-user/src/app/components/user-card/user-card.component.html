@@ -1,55 +1,63 @@
 <div class="card">
   <div>
-    <img class="avatar" src="{{userPerfil?.avatar_url}}" alt="avatar">
+    <img class="avatar" src="{{ userPerfil?.avatar_url }}" alt="avatar" />
   </div>
   <div class="card-body">
     <div class="card-body__profile-info">
       <div>
-        <h2>Title</h2>
-        <span>{{userName}}</span>
+        <h2>{{userPerfil?.name}}</h2>
+        <span class="username">@{{ userName }}</span>
       </div>
       <div>
-        <p>date</p>
+        <p>Joined {{ userPerfil?.created_at | date }}</p>
       </div>
     </div>
-    <p>Bio</p>
+    <p>{{ userPerfil?.bio }}</p>
     <div class="card-body__profile-status">
       <div>
         <p class="title">Repos</p>
-        <p></p>
+        <p class="infos">{{ userPerfil?.public_repos }}</p>
       </div>
       <div>
         <p class="title">Followers</p>
-        <p></p>
+        <p class="infos">{{ userPerfil?.followers }}</p>
       </div>
       <div>
         <p class="title">Following</p>
-        <p></p>
+        <p class="infos">{{ userPerfil?.following }}</p>
       </div>
     </div>
     <div class="card-body__profile-bottom">
-      <div>
+      <div [ngStyle]="{ opacity: !userPerfil?.location ? 0.5 : 1 }">
         <div class="profile-bottom__content">
-          <img src="../../../assets/imgs/icon-location.svg" alt="location-icon">
+          <img
+            src="../../../assets/imgs/icon-location.svg"
+            alt="location-icon"
+          />
         </div>
-        <p>City</p>
+        <p>{{ userPerfil?.location }}</p>
+        <p *ngIf="!userPerfil?.location">Not available</p>
       </div>
-      <div>
+      <div [ngStyle]="{ opacity: !userPerfil?.twitter_username ? 0.5 : 1 }">
         <div class="profile-bottom__content">
-          <img src="../../../assets/imgs/icon-twitter.svg" alt="twitter-icon">        </div>
-        <p>Twitter</p>
-      </div>
-      <div>
-        <div class="profile-bottom__content">
-          <img src="../../../assets/imgs/icon-website.svg" alt="">
+          <img src="../../../assets/imgs/icon-twitter.svg" alt="twitter-icon" />
         </div>
-        <p>e-mail</p>
+        <p>{{ userPerfil?.twitter_username }}</p>
+        <p *ngIf="!userPerfil?.twitter_username">Not available</p>
       </div>
-      <div>
+      <div [ngStyle]="{ opacity: !userPerfil?.blog ? 0.5 : 1 }">
         <div class="profile-bottom__content">
-          <img src="../../../assets/imgs/icon-company.svg" alt="">
+          <img src="../../../assets/imgs/icon-website.svg" alt="" />
         </div>
-        <p>job</p>
+        <p class="blog">{{ userPerfil?.blog }}</p>
+        <p *ngIf="!userPerfil?.blog">Not available</p>
+      </div>
+      <div [ngStyle]="{ opacity: !userPerfil?.company ? 0.5 : 1 }">
+        <div class="profile-bottom__content">
+          <img src="../../../assets/imgs/icon-company.svg" alt="" />
+        </div>
+        <p>{{ userPerfil?.company }}</p>
+        <p *ngIf="!userPerfil?.company">Not available</p>
       </div>
     </div>
   </div>

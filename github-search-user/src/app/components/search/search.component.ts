@@ -24,5 +24,6 @@ export class SearchComponent implements OnInit {
 
   search(){
     this.emmitText.emit(this.form.get('username')?.value)
+    this.form.reset();
   }
 }
