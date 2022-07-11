@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GithubPerfilService } from 'src/app/services/github-perfil.service';
+import { UserPerfil } from 'src/shared/models/UserPerfil';
 
 @Component({
   selector: 'app-user-card',
@@ -9,7 +10,7 @@ import { GithubPerfilService } from 'src/app/services/github-perfil.service';
 export class UserCardComponent implements OnInit, OnChanges {
 
   @Input() public userName: string = '';
-
+  userPerfil!: UserPerfil;
   constructor(private githubPerfilService: GithubPerfilService) { }
 
   ngOnInit(): void {
@@ -23,7 +24,10 @@ export class UserCardComponent implements OnInit, OnChanges {
   }
 
   getUserPerfil() {
-    this.githubPerfilService.getPerfilUser(this.userName).subscribe(res => console.log(res))
+    this.githubPerfilService.getPerfilUser(this.userName).subscribe(res => {
+      this.userPerfil = res;
+      console.log(this.userPerfil)
+    })
   }
 
 
