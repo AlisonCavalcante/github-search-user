@@ -1,12 +1,12 @@
 <div class="card">
   <div>
-    <img class="avatar" src="{{ userPerfil?.avatar_url }}" alt="avatar" />
+    <img *ngIf="userPerfil" class="avatar" src="{{ userPerfil?.avatar_url }}" alt="avatar" />
   </div>
   <div class="card-body">
     <div class="card-body__profile-info">
       <div>
         <h2>{{userPerfil?.name}}</h2>
-        <span class="username">@{{ userName }}</span>
+        <span class="username">@{{ userPerfil?.name }}</span>
       </div>
       <div>
         <p>Joined {{ userPerfil?.created_at | date }}</p>

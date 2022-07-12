@@ -8,12 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   userName!: string;
+  darkMode: boolean = false;
+  noResult: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  changeTheme() {
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle('dark-theme');
+  }
+
   searchUser(userName: string) {
    this.userName = userName;
   }
+
+  resultSearch(result: boolean) {
+   this.noResult = result;
+  }
+
+
 }

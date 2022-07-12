@@ -1,34 +1,45 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { GithubPerfilService } from 'src/app/services/github-perfil.service';
 import { UserPerfil } from 'src/shared/models/UserPerfil';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
-  styleUrls: ['./user-card.component.css']
+  styleUrls: ['./user-card.component.css'],
 })
 export class UserCardComponent implements OnInit, OnChanges {
-
   @Input() public userName: string = '';
   userPerfil!: UserPerfil;
-  constructor(private githubPerfilService: GithubPerfilService) { }
+  @Output() public noResult: EventEmitter<boolean> = new EventEmitter(false);
+  constructor(private githubPerfilService: GithubPerfilService) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-      if(changes){
-        this.getUserPerfil();
-      }
+    if (changes) {
+      this.getUserPerfil();
+    }
   }
 
   getUserPerfil() {
-    this.githubPerfilService.getPerfilUser(this.userName).subscribe(res => {
-      this.userPerfil = res;
-      console.log(this.userPerfil)
-    })
+    if (this.userName != undefined) {
+      this.githubPerfilService.getPerfilUser(this.userName).subscribe(
+        (next) => {
+          this.userPerfil = next;
+          this.noResult.emit(false);
+        },
+        (error) => {
+          this.noResult.emit(true);
+        }
+      );
+    }
   }
-
-
 }

@@ -1,10 +1,27 @@
 <main>
   <div class="content">
-    <div style="display: flex">
+    <div class="header">
       <h3>DevFinder</h3>
-      <p>Light</p>
+      <div>
+        <div style="display: flex;">
+          <button *ngIf="darkMode" (click)="changeTheme()">
+            <p>LIGHT</p>
+            <img src="../../../assets/imgs/icon-sun.svg" alt="" />
+          </button>
+        </div>
+        <div style="display: flex;">
+          <button  *ngIf="!darkMode" (click)="changeTheme()">
+            <P>DARK</P>
+            <img src="../../../assets/imgs/icon-moon.svg" alt="" />
+          </button>
+        </div>
+      </div>
     </div>
-    <app-search (emmitText)="searchUser($event)" style="width: 50%"></app-search>
-    <app-user-card [userName]="userName" style="width: 50%"></app-user-card>
+    <app-search
+      (emmitText)="searchUser($event)"
+      style="width: 50%"
+      [noResults]="noResult"
+    ></app-search>
+    <app-user-card (noResult)="resultSearch($event)" [userName]="userName" style="width: 50%"></app-user-card>
   </div>
 </main>
